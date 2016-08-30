@@ -4,4 +4,4 @@
 * Everything else
 
 # Complete
-* Configure MBR binary
+* Configure bootloader binary
