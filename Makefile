@@ -9,4 +9,4 @@ clean:
 	rm -f boot.bin
 
 boot.bin:
-	nasm -f bin boot.asm -o boot.bin
+	nasm -f bin boot/boot.asm -o boot.bin

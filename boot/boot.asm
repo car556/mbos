@@ -3,8 +3,8 @@
 
 jmp main
 
-%include 'print.asm'
-%include 'load_disk.asm'
+%include 'boot/print.asm'
+%include 'boot/load_disk.asm'
 
 new_line: db 10, 13, 0
 boot_drive_message: db 'Loading in from: ', 0
@@ -41,4 +41,4 @@ main:
 times 510-($-$$) db 0
 dw 0xaa55
 
-%include 'stage2.asm'
+%include 'boot/stage2.asm'
