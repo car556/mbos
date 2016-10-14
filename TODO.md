@@ -4,4 +4,5 @@
 * Everything else
 
 # Complete
-* Configure bootloader binary
+* Get to bootloader stage 2
+* Get a runnable bootloader

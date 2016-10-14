@@ -53,3 +53,43 @@ print:
 
   popa
 %endmacro
+
+; %1 is any byte sized register
+%macro print_hexb 1
+  ; uses ax, and dl
+  push ax
+  push dx
+
+  mov dl, %1 ; store data from register param in dl
+
+  mov ah, 0x0e ; set BIOS write char flag
+  ; write out a preceeding 0x
+  mov al, 0x30
+  int 0x10
+  mov al, 0x78
+  int 0x10
+
+  mov al, dl
+  shr al, 4 ; shift upper nibble into lower nibble
+  ; magic that turns hex in lower nibble into
+  ; ascii printable version
+  cmp al, 0x0A
+  sbb al, 0x69
+  das
+
+  int 0x10
+
+  mov al, dl
+  and al, 0x0f ; 0 out upper nibble
+  ; magic that turns hex in lower nibble into
+  ; ascii printable version
+  cmp al, 0x0A
+  sbb al, 0x69
+  das
+
+  int 0x10
+
+  pop dx
+  pop ax
+
+%endmacro
